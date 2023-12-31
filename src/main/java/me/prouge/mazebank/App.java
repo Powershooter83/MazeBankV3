@@ -11,7 +11,6 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
         Injector injector = Guice.createInjector(new BasicModule());
-        Test test = injector.getInstance(Test.class);
-        test.create();
+       // Test test = injector.getInstance(Test.class);
     }
 }
