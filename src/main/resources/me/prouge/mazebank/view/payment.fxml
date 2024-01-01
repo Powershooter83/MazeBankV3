@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane xmlns:fx="http://java.sun.com/JSP/Page"
+            maxHeight="-Infinity"
+            maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="1065.0" prefWidth="1463.0"
+            stylesheets="@../css/dashboard.css" xmlns="http://javafx.com/javafx/21">
+    <left>
+        <fx:include source="sidebar.fxml"/>
+    </left>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets right="220.0"/>
+            </BorderPane.margin>
+        </VBox>
+    </center>
+</BorderPane>
