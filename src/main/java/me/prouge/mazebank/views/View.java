@@ -10,21 +10,22 @@ import java.io.IOException;
 
 public abstract class View {
 
-    protected final String view;
+    private final String viewName;
     @Inject
     private Injector injector;
-
     @Inject
     private MainStage stage;
 
 
-    public View(final String view) {
-        this.view = view;
+    public View() {
+        ViewConfig config = this.getClass().getAnnotation(ViewConfig.class);
+        this.viewName = config.value();
         initialize();
     }
 
+
     public void show() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/me/prouge/mazebank/view/" + view));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/me/prouge/mazebank/view/" + viewName + ".fxml"));
         loader.setControllerFactory(type -> injector.getInstance(type));
         createStage(loader);
     }

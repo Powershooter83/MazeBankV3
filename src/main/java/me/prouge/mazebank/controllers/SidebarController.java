@@ -35,9 +35,7 @@ public class SidebarController implements Initializable {
     @Inject
     private PaymentView paymentView;
 
-
     private View activeView;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -47,10 +45,18 @@ public class SidebarController implements Initializable {
     }
 
     private void changeView(View newView) {
-        if (activeView.getClass().equals(newView.getClass())) {
+        if (activeView == newView) {
             return;
         }
 
         newView.show();
+        if (newView == dashboardView) {
+            dashboardBtn.requestFocus();
+        }
+        if (newView == paymentView) {
+            paymentBtn.requestFocus();
+        }
+
+        activeView = newView;
     }
 }
