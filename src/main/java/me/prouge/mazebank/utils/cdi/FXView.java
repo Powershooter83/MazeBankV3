@@ -1,4 +1,4 @@
-package me.prouge.mazebank.views;
+package me.prouge.mazebank.utils.cdi;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,6 +7,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface ViewConfig {
-    String value();
+public @interface FXView {
+    String value() default "";
 }

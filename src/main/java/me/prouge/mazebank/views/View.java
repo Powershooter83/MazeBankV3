@@ -5,6 +5,8 @@ import com.google.inject.Injector;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import me.prouge.mazebank.utils.MainStage;
+import me.prouge.mazebank.utils.cdi.CustomFXMLLoader;
+import me.prouge.mazebank.utils.cdi.FXView;
 
 import java.io.IOException;
 
@@ -18,20 +20,27 @@ public abstract class View {
 
 
     public View() {
-        ViewConfig config = this.getClass().getAnnotation(ViewConfig.class);
-        this.viewName = config.value();
-        initialize();
+        FXView config = this.getClass().getAnnotation(FXView.class);
+        if (config.value().isEmpty()) {
+            this.viewName = mapToFXMLFileName();
+        } else {
+            this.viewName = config.value();
+        }
     }
 
 
     public void show() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/me/prouge/mazebank/view/" + viewName + ".fxml"));
-        loader.setControllerFactory(type -> injector.getInstance(type));
-        createStage(loader);
+        CustomFXMLLoader customLoader = new CustomFXMLLoader(injector);
+        try {
+            Scene scene = new Scene(customLoader.load("/me/prouge/mazebank/view/" + viewName));
+            stage.get().setScene(scene);
+            stage.get().setTitle("Maze Bank");
+            stage.get().show();
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load view: " + viewName, e);
+        }
     }
 
-    public void initialize() {
-    }
 
     private void createStage(FXMLLoader loader) {
         Scene scene = null;
@@ -44,6 +53,14 @@ public abstract class View {
         stage.get().setScene(scene);
         stage.get().setTitle("Maze Bank");
         stage.get().show();
+    }
+
+    private String mapToFXMLFileName() {
+        String className = getClass().getSimpleName();
+        className = className.toLowerCase();
+        className = className.replace("view", "");
+        className += ".fxml";
+        return className;
     }
 
 

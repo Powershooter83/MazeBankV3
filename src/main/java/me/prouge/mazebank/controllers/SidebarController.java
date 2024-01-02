@@ -4,9 +4,9 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import me.prouge.mazebank.views.DashboardView;
-import me.prouge.mazebank.views.PaymentView;
 import me.prouge.mazebank.views.View;
+import me.prouge.mazebank.views.navigation.DashboardView;
+import me.prouge.mazebank.views.navigation.PaymentView;
 
 import java.net.URL;
 import java.util.ResourceBundle;

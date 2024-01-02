@@ -5,6 +5,7 @@ module me.prouge.mazebank {
     requires javax.inject;
     requires com.google.guice;
     requires org.hibernate.orm.core;
+    requires reflections;
     requires static lombok;
 
     opens me.prouge.mazebank;
@@ -13,4 +14,6 @@ module me.prouge.mazebank {
     opens me.prouge.mazebank.utils;
     opens me.prouge.mazebank.views;
     exports me.prouge.mazebank;
+    opens me.prouge.mazebank.views.navigation;
+    opens me.prouge.mazebank.utils.cdi;
 }
