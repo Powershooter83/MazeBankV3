@@ -1,4 +1,4 @@
-package me.prouge.mazebank.utils.cdi;
+package me.prouge.mazebank.utils;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;

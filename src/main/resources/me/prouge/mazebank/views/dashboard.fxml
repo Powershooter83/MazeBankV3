@@ -8,14 +8,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-<BorderPane xmlns:fx="http://java.sun.com/JSP/Page"
-            maxHeight="-Infinity"
-            maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="1065.0" prefWidth="1463.0"
-            stylesheets="@../css/dashboard.css" xmlns="http://javafx.com/javafx/21">
-    <left>
-        <fx:include source="sidebar.fxml"/>
-    </left>
+<BorderPane
+        maxHeight="-Infinity"
+        maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+        prefHeight="1065.0" prefWidth="1463.0"
+        stylesheets="@../css/dashboard.css" xmlns="http://javafx.com/javafx/21">
     <center>
         <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <BorderPane.margin>

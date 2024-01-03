@@ -4,7 +4,10 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import me.prouge.mazebank.views.View;
+import javafx.scene.layout.BorderPane;
+import me.prouge.guicefx.View;
+import me.prouge.guicefx.annotations.FXController;
+import me.prouge.mazebank.views.AppView;
 import me.prouge.mazebank.views.navigation.DashboardView;
 import me.prouge.mazebank.views.navigation.PaymentView;
 
@@ -12,6 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 @Singleton
+@FXController
 public class SidebarController implements Initializable {
 
     public Button dashboardBtn;
@@ -31,15 +35,18 @@ public class SidebarController implements Initializable {
 
     @Inject
     private DashboardView dashboardView;
-
     @Inject
     private PaymentView paymentView;
+
+    @Inject
+    private AppView appView;
 
     private View activeView;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         activeView = dashboardView;
+
         dashboardBtn.setOnAction(e -> changeView(dashboardView));
         paymentBtn.setOnAction(e -> changeView(paymentView));
     }
@@ -49,12 +56,16 @@ public class SidebarController implements Initializable {
             return;
         }
 
-        newView.show();
+        BorderPane borderPane = (BorderPane) appView.getNode();
         if (newView == dashboardView) {
-            dashboardBtn.requestFocus();
+            //   dashboardView.show();
+            borderPane.setCenter(dashboardView.getNode());
+            // dashboardBtn.requestFocus();
         }
         if (newView == paymentView) {
-            paymentBtn.requestFocus();
+            //  paymentView.show();
+            borderPane.setCenter(paymentView.getNode());
+            // paymentBtn.requestFocus();
         }
 
         activeView = newView;

@@ -23,6 +23,11 @@
             <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>me.prouge</groupId>
+            <artifactId>guicefx</artifactId>
+            <version>1.1.0</version> <!-- Die Version Ihrer Bibliothek -->
+        </dependency>
 
         <!-- Andere Abhängigkeiten ... -->
         <dependency>
