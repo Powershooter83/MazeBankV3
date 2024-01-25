@@ -26,7 +26,7 @@
         <dependency>
             <groupId>me.prouge</groupId>
             <artifactId>guicefx</artifactId>
-            <version>1.1.0</version> <!-- Die Version Ihrer Bibliothek -->
+            <version>1.0.7</version> <!-- Die Version Ihrer Bibliothek -->
         </dependency>
 
         <!-- Andere Abhängigkeiten ... -->
@@ -95,6 +95,7 @@
 
     <build>
         <plugins>
+            <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -104,6 +105,8 @@
                     <target>17</target>
                 </configuration>
             </plugin>
+
+            <!-- JavaFX Maven Plugin -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
@@ -112,17 +115,39 @@
                     <execution>
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>me.prouge.mazebank/me.prouge.mazebank.App</mainClass>
-                            <launcher>app</launcher>
-                            <jlinkZipName>app</jlinkZipName>
-                            <jlinkImageName>app</jlinkImageName>
-                            <noManPages>true</noManPages>
-                            <stripDebug>true</stripDebug>
-                            <noHeaderFiles>true</noHeaderFiles>
+                            <mainClass>me.prouge.mazebank.Main</mainClass>
+                            <!-- Weitere JavaFX-spezifische Konfigurationen -->
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Maven Assembly Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>me.prouge.mazebank.Main</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
+
 </project>

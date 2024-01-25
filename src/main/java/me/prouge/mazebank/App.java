@@ -19,5 +19,8 @@ public class App extends Application {
         appView.show(stage);
     }
 
+    public static void main(String[] args) {
+        launch(args);
+    }
 
 }

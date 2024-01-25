@@ -15,7 +15,6 @@ module me.prouge.mazebank {
     opens me.prouge.mazebank.utils;
     opens me.prouge.mazebank.views;
     opens me.prouge.mazebank.views.navigation;
-    opens me.prouge.mazebank.utils;
 
     exports me.prouge.mazebank;
 }
