@@ -3,10 +3,10 @@ module me.prouge.mazebank {
     requires me.prouge.guicefx;
     requires javafx.fxml;
     requires jakarta.persistence;
-    requires javax.inject;
+    requires jakarta.inject;
     requires com.google.guice;
     requires org.hibernate.orm.core;
-    requires reflections;
+    requires org.reflections;
     requires static lombok;
 
     opens me.prouge.mazebank;
