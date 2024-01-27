@@ -1,10 +1,10 @@
 package me.prouge.mazebank.views.navigation;
 
 
+import jakarta.inject.Singleton;
 import me.prouge.guicefx.View;
 import me.prouge.guicefx.annotations.FXView;
 
-import javax.inject.Singleton;
 
 @Singleton
 @FXView
