@@ -5,22 +5,25 @@ import com.google.inject.Injector;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import me.prouge.mazebank.utils.BasicModule;
-import me.prouge.mazebank.views.AppView;
+import me.prouge.mazebank.views.authentication.LoginView;
 
 
 public class App extends Application {
 
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage stage) {
         Injector injector = Guice.createInjector(new BasicModule());
 
-        AppView appView = injector.getInstance(AppView.class);
-        appView.show(stage);
-    }
-
-    public static void main(String[] args) {
-        launch(args);
+        LoginView loginView = injector.getInstance(LoginView.class);
+        stage.setWidth(450);
+        stage.setTitle("Simplenote");
+        stage.setHeight(450);
+        loginView.show(stage);
     }
 
 }

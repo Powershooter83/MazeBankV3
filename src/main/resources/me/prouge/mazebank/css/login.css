@@ -1,0 +1,27 @@
+* {
+    -fx-background-color: white;
+}
+
+.logo-text {
+    -fx-font-size: 20px;
+
+}
+
+TextField {
+    -fx-border-color: darkgray;
+}
+
+.login-btn {
+    -fx-background-color: #3361cc;
+    -fx-text-fill: white;
+}
+
+
+.password-reset {
+    -fx-text-fill: #3361cc;
+}
+
+.login-wordpress-btn {
+    -fx-background-color: #3361cc;
+    -fx-text-fill: white;
+}
