@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import lombok.NoArgsConstructor;
 
 @Entity
-@NoArgsConstructor
 public class UserEntity {
 
     @Id
@@ -22,6 +21,10 @@ public class UserEntity {
     public UserEntity(final String email, final String pwd) {
         this.email = email;
         this.password = pwd;
+    }
+
+    public UserEntity() {
+
     }
 
     private Long getId() {

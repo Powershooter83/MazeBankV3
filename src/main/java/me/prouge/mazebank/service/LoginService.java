@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import me.prouge.mazebank.entities.UserEntity;
+import me.prouge.mazebank.exception.UserAlreadyExistsException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,10 +32,20 @@ public class LoginService {
         return typedQuery.getResultList().size() == 1;
     }
 
-    public void register(final String email, final String pwd) {
+    public void register(final String email, final String pwd) throws UserAlreadyExistsException {
+        if(emailExists(email)) {
+            throw new UserAlreadyExistsException();
+        }
         entityManager.getTransaction().begin();
         entityManager.persist(new UserEntity(email, pwd));
         entityManager.getTransaction().commit();
+    }
+
+    private boolean emailExists(final String email) {
+        TypedQuery<UserEntity> typedQuery
+              = entityManager.createQuery("SELECT u FROM UserEntity u WHERE u.email=:email", UserEntity.class);
+        typedQuery.setParameter("email", email);
+       return !typedQuery.getResultList().isEmpty();
     }
 
 }
